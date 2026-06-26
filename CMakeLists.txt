@@ -9,6 +9,7 @@ add_executable(darkswitch
     src/main.cpp
     src/emulator.cpp
     src/memory.cpp
+    src/cpu.cpp
 )
 
 target_include_directories(darkswitch PRIVATE include)
