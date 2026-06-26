@@ -1,5 +1,6 @@
 #include "emulator.hpp"
 #include "memory.hpp"
+#include "cpu.hpp"
 
 #include <chrono>
 #include <iostream>
@@ -16,10 +17,16 @@ bool Emulator::load_rom(const std::string& path) {
 void Emulator::run() {
     running_ = true;
 
+    CPU cpu;
+    Memory memory;
+
+    cpu.reset();
+
     std::cout << "Emulator loop started.\n";
     std::cout << "This is only a skeleton right now.\n";
 
     for (int frame = 0; frame < 5 && running_; ++frame) {
+        cpu.step();
         std::cout << "Frame " << frame << '\n';
         std::this_thread::sleep_for(std::chrono::milliseconds(200));
     }
